@@ -1,0 +1,61 @@
+<div class="main-content-agile " >
+    <div class="sub-main-w3 ">
+        <form #createFilmForm="ngForm" (ngSubmit)="onSubmit(createFilmForm)">
+            <h2> create a film</h2>
+            <div class="form-style-agile">
+                <input placeholder="Film Name" name="filmName" type="text" required 
+                [(ngModel)]="createFilm.fileName" 
+     #fileName="ngModel">
+              </div>
+              <div class="form-style-agile">
+                  <input placeholder="Ticket Price" name="ticket" type="text" required 
+                  [(ngModel)]="createFilm.ticket" 
+     #ticket="ngModel">
+                </div>
+
+                <div class="form-style-agile">
+                    <input placeholder="Genre" name="genre" type="text" required
+                    [(ngModel)]="createFilm.genre" 
+     #genre="ngModel">
+                  </div>
+
+                  <div class="form-style-agile">
+                      <select class="category" required name="rating" [(ngModel)]="createFilm.rating" 
+                      #rating="ngModel">
+                          <option value="">Choose rating</option>
+                          <option value="1">*</option>
+                          <option value="2">**</option>
+                          <option value="3">***</option>
+                          <option value="4">****</option>
+                          <option value="5">*****</option>
+                        </select>
+                    </div>
+
+                    <div class="form-style-agile">
+                        <input placeholder="Country" name="country" type="text" required [(ngModel)]="createFilm.country" 
+                        #country="ngModel">
+                      </div>
+
+                      <div class="form-style-agile">
+                          <input id="datepicker" placeholder="Release date" [(ngModel)]="createFilm.releaseDate" 
+                          #realeaseDate="ngModel" name="releaseDate" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
+                              required>
+                        </div>
+
+                        <div class="form-style-agile">
+                            <input placeholder="Slug" name="slug" type="text" [(ngModel)]="createFilm.slug" 
+                            #slug="ngModel" required>
+                          </div>
+              <div class="form-style-agile">
+                <textarea placeholder="description" name="description" required [(ngModel)]="createFilm.description" 
+                #description="ngModel"></textarea>
+              </div>
+              <div class="form-style-agile">
+                  <label>Photo</label><br>
+                <input  name="photo" type="file" #file required  
+                 (change)="onFileSelected($event)"><br>
+              </div>
+              <button type="submit" class="btn btn-success" [disabled]="!createFilmForm.form.valid">submit</button>
+            </form>
+    </div>
+</div>

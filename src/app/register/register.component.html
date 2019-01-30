@@ -1,0 +1,42 @@
+<div class="main-content-agile " >
+    <div class="sub-main-w3 ">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
+            <h2> Register</h2>
+            <div class="form-style-agile form-group">
+                <input type="text"  placeholder="Name" id="name"
+       required
+       [(ngModel)]="register.name" name="name"
+       #name="ngModel">
+                <div [hidden]="name.valid && (name.dirty || name.touched)"
+     class="alert alert-danger ">
+  Name is required
+</div>
+              </div>
+         
+            <div class="form-group form-style-agile" >
+                <input placeholder="Email"  name="email" pattern="[^ @]*@[^ @]*" #email="ngModel" [(ngModel)]="register.email" type="text" required>
+               
+                <!-- <div class="form-control-feedback"
+     *ngIf="email.errors && (email.dirty || email.touched)">
+  <p *ngIf="email.errors.required">Email is required</p>
+  <p *ngIf="email.errors.minlength">Email must contain at least the @ character</p>
+</div> -->
+<div [hidden]="email.valid && (email.dirty || email.touched)"
+class="alert alert-danger ">
+Email is required
+</div>
+              </div>
+              <div class="form-style-agile">
+                  <input placeholder="Password" name="password" #password="ngModel" [(ngModel)]="register.password"  type="password" required>
+                  <div [hidden]="password.valid && (password.dirty || password.touched)"
+class="alert alert-danger ">
+Password is required
+</div>
+                </div>
+               
+                  <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid"> Register </button>
+            </form>
+
+            <!-- <pre>{{registerForm.value | json}}</pre> -->
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="main-content-agile " >
+    <div class="sub-main-w3 ">
+      <div style="justify-content: center;" class="content"> 
+      <h2>
+        {{data?.data.film.name}}
+      </h2>
+  
+      
+      <img class="card-img-top" src="{{'http://localhost:8000/uploads/'+data?.data.film.photo}}" alt="Card image cap" style="height: 500px; width: 500px;">
+  <br><br>
+      <h5>Name: {{data?.data.film.name}}</h5><br>
+      <p>description: {{data?.data.film.description}}</p><br>
+      <h5>Release date: {{data?.data.film.release_date}}</h5><br>
+      <h5>Ticket price: {{data?.data.film.ticket_price}}</h5><br>
+      <h5>Country: {{data?.data.film.country}}</h5><br>
+      <h5>Film slug: {{data?.data.film.film_slug}}</h5><br>
+      <h5>Film rating: {{data?.data.film.rating}}</h5><br>
+      <div>
+          
+      </div>
+     
+    </div>
+ 
+    </div>
+    <div class="sub-main-w3 ">
+        <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+            <h2> Post a comment</h2>
+            <div class="form-style-agile form-group">
+              <input type="text"  placeholder="Name" id="name"
+     required
+     [(ngModel)]="post.name" name="name"
+     #name="ngModel">
+              <div [hidden]="name.valid && (name.dirty || name.touched)"
+   class="alert alert-danger ">
+Name is required
+</div>
+            </div>
+
+              <div class="form-style-agile">
+                <textarea placeholder="Comment..."  required name="comment" [(ngModel)]="post.comment" #comment="ngModel"></textarea>
+                <div [hidden]="comment.valid && (comment.dirty || comment.touched)"
+                class="alert alert-danger ">
+            Comment is required
+             </div>
+              </div>
+              <!-- <input type="text"  value="{{data?.data.film.id}}" name="filmId" [(ngModel)]="post.filmId"  #filmId="ngModel"> -->
+              <button class="btn btn-success" [disabled]="!commentForm.form.valid">Submit</button>
+            </form>
+      </div>
+
+    
+  </div>
+<h2>Comments</h2>
+  <div class="main-content-agile ">
+      <div class="sub-main-w3 ">
+        <div style="justify-content: center;" class="content"> 
+          <div *ngFor="let comment of data?.data.comments">
+            <p>Name: {{comment.name}}</p>
+          <p >Commemnt: {{comment.comment}}</p>
+          </div>
+        </div>
+      </div>
+ </div>
+
+ 

@@ -1,0 +1,28 @@
+<div class="main-content-agile " >
+    <div class="sub-main-w3 ">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <h2> Login</h2>
+            <div class="form-group form-style-agile" >
+                <input placeholder="Email"  name="email" pattern="[^ @]*@[^ @]*" #email="ngModel" [(ngModel)]="login.email" type="text" required>
+               
+                <!-- <div class="form-control-feedback"
+     *ngIf="email.errors && (email.dirty || email.touched)">
+  <p *ngIf="email.errors.required">Email is required</p>
+  <p *ngIf="email.errors.minlength">Email must contain at least the @ character</p>
+</div> -->
+<div [hidden]="email.valid && (email.dirty || email.touched)"
+class="alert alert-danger ">
+Email is required
+</div>
+              </div>
+              <div class="form-style-agile">
+                  <input placeholder="Password" name="password" #password="ngModel" [(ngModel)]="login.password"  type="password" required>
+                  <div [hidden]="password.valid && (password.dirty || password.touched)"
+class="alert alert-danger ">
+Password is required
+</div>
+                </div>
+                <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid"> Login </button>
+            </form>
+    </div>
+</div>
